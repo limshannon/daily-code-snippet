@@ -11,3 +11,14 @@ def solution(inputstr):
     return True
         
 
+#############
+def is_palindrome(s):
+    left = 0
+    right = len(s) - 1
+    i = 1
+    while left < right:
+        left = left + 1
+        right = right - 1
+        i = i + 1
+    print("Loop terminated with left = ", left, ", right = ", right, sep="")
+    return ("The pointers have either reached the same index, or have crossed each other, hence we don't need to look further.")
