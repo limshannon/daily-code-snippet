@@ -73,6 +73,15 @@ def solution(n, k):
     return f(n)
 ###
 def solution(n, k):
+    if n <= 0: return [[]]
+    if n == 1: return [[1]]
+    res = []
+    for i in range(1, min(k+1, n+1)):
+        res += [[i] + j for j in solution(n-i, k)]
+    return res
+    
+###
+def solution(n, k):
     
     ret = []
     _solution(n, k, [], ret)
