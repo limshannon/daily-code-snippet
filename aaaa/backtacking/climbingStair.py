@@ -1,5 +1,13 @@
-def findPossible(stair, k):
-    
+#For n = 4 and k = 2, the output should be
+
+#climbingStaircase(n, k) =
+#[[1, 1, 1, 1],
+# [1, 1, 2],
+# [1, 2, 1],
+# [2, 1, 1],
+# [2, 2]]
+
+def findPossible(stair, k):    
     if len(stair) == 0:
         return [[]]
     if len(stair) == 1:
