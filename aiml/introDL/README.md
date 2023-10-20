@@ -28,11 +28,4 @@ This course provides an introduction to the concepts, mathematical models, const
 
 # Setting Up a Python Development Environment
 
-## Devops-Setup
-Deep learning tools like python, pytorch, tensorflow, keras, etc can be set up by following the instructions in the [Devops Setup Tool](https://git.web.boeing.com/DevHub/devops-setup#windows). In addition, there are numerous channels on the [DevHub MatterMost](https://mattermost.web.boeing.com/devhub) with vibrant support communities for tools like Python and VsCode.
-
-# Questions and Comments
-
-If you have a question or comment about the course material, feel free to create an issue on the [Issue Board](https://git.web.boeing.com/dl/introdl/-/issues) for this GitLab repository. You can use this board to communicate with others enrolled in this course as well.
-
-Please reach out to [Samet Ayhan](mailto:samet.m.ayhan@boeing.com) or [Matt Johnson](mailto:matthew.d.johnson4@boeing.com) with any further questions.
+ 
