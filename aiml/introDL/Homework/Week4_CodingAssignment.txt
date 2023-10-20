@@ -1,0 +1,28 @@
+﻿The objective of this assignment is to have a GAN training example on the MNIST dataset. The generator would generate digit images, and the discriminator would identify if the output comes from real data distribution or generated data distribution.
+
+To train the discriminator:
+* Get the real data and real labels.
+* Do a forward pass by feeding the real data to the discriminator neural network. This provides the real outputs from the real data.
+* Calculate the discriminator loss for the real outputs and labels and backpropagate it.
+* Get the fake data using the noise vector and do a forward pass through the generator. Get fake labels as well.
+* Using the fake data, do a forward pass through the discriminator. Calculate the loss using the fake data outputs and the fake labels. Backpropagate the fake data loss. Then calculate the total discriminator loss by adding real data loss and fake data loss.
+* Update the discriminator optimizer parameters.
+
+To train the generator:
+* Get the fake data by doing a forward pass through the generator.
+* Do a forward pass through the discriminator using the fake data and the labels.
+* Calculate the loss and backpropagate them.
+* But this time, update the generator optimizer parameters.
+
+Tasks
+* Do all the necessary imports.
+* Prepare the dataset.
+* Define the generator and discriminator network.
+* Initialize generator and discriminator, and define the optimizers.
+* Train the generator and discriminator.
+* Use a noise vector to generate fake data, and train the generator and discriminator networks for 200 epochs.
+* Plot loss of generator and discriminator.
+* Explain the trend of loss of generator and discriminator with the number of epochs.
+* Generate and examine the generator output at the end of the 1st, 50th, 100th, 150th and 200th epochs. How does the output change with different epochs?
+
+You can use any of the well-established DL frameworks including Keras, Tensorflow, PyTorch, etc. 

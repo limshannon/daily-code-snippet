@@ -1,0 +1,14 @@
+In this assignment, you will use the IMDB dataset, which contains 50,000 highly-polar movie reviews (good or bad) for training and the same amount again for testing. The problem is to determine whether a given movie review has a positive or negative sentiment. The data was collected by Stanford researchers and was used in their 2011 paper, "Learning Word Vectors for Sentiment Analysis". 
+
+A recent breakthrough in the field of natural language processing (NLP) is called word embedding. This is a technique where words are encoded as real-valued vectors in a high dimensional space, where the similarity between words in terms of meaning translates to closeness in the vector space. Discrete words are mapped to vectors of continuous numbers. This is useful when working with natural language problems with neural networks as we require numbers as input values. Keras provides a convenient way to convert positive integer representations of words into a word embedding by an Embedding layer.
+
+Convolutional neural networks (CNN) were designed to honor the spatial structure in image data while being robust to the position and orientation of learned objects in the scene. This same principle can be used on sequences, such as the one-dimensional sequence of words in a movie review. Keras supports one dimensional convolutions and pooling by the Conv1D and MaxPooling1D classes respectively.
+
+1. Import all necessary libraries and load the dataset but only keep the top n words, zero the rest, where n=5000. You can pad the dataset to a maximum review length in words.
+2. Split the data into train and test 
+3. Create the model. You must use at least one Conv1D and MaxPooling1D in your model. Make your best judgement for activation function and optimizer. For the sake of consistency and to compare against the expected output, use accuracy for metrics.
+4. Fit the model and evaluate it. Print the accuracy in percentage. Make your best judgement for number of epochs, and batch size.
+
+Reasonable performance should generate an accuracy of over 85%. 
+
+You can use any of the well-established DL frameworks including Keras, Tensorflow, PyTorch, etc. Running code that achieves the same set of tasks and generates an output in the expected range is what determines the quality of your code. 

@@ -1,0 +1,15 @@
+In this assignment, you will use the Boston house price dataset.  Study the dataset and make sure that you understand the input parameters (1-13) and the output parameter (14), median value of owner-occupied homes in $1000's (MEDV).
+
+In this assignment, you will address a regression problem of Boston house prices, by building a Multilayer Perceptron (MLP), which is a special case of a feedforward neural network, where every layer is a fully connected layer. Below is a set of steps to build and evaluate your MLP.
+
+1. Import all necessary libraries and load the dataset.
+2. Split the data into input (X) and (Y) variables.
+3. Define the model. Suggested model is formed by at least two fully connected hidden layers, in addition to the input and output layers. Make your best judgement for activation function and optimizer. For the sake of consistency and to compare against the expected output, use Mean Squared Error (MSE) for loss. 
+4. Standardize the dataset for better performance. You can use scikit-learn's pipeline framework to perform standardization during the model evaluation process within each fold of the cross validation.
+5. Evaluate the model with k-fold cross validation. Print mean error (MSE) and standard deviation. Make your best judgement for k, number of epochs, and batch size.
+6. Now implement a fully connected neural network with a single hidden layer, and a ReLU nonlinearity. This should work for any number of units in the hidden layer and any sized input (but still just one output unit). How difficult was it to find an appropriate set of hidden units to solve this problem?
+7. Now, write more general code to handle a fully-connected network of arbitrary depth. This will be just like the network in Problem 6, but with more layers. Do some experiments to determine whether the depth of a network has any significant effect on how quickly your network can converge to a good solution.
+
+Reasonable performance for models evaluated using Mean Squared Error (MSE) are around 20 in squared thousands of dollars. (Note, the MSE is negative because scikit-learn inverts so that the metric is maximized instead of minimized. You can ignore the sign of the result.)
+
+You can use any of the well-established DL frameworks including Keras, Tensorflow, PyTorch, etc. Running code that achieves the same set of tasks and generates an output in the expected range is what determines the quality of your code. 
