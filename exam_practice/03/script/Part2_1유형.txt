@@ -1,0 +1,387 @@
+#제1유형 데이터 전처리
+
+#pandas불러오기
+import pandas as pd
+import seaborn as sns
+
+titanic = sns.load_dataset('titanic') #내장 데이터셋 불러오기
+titanic
+
+titanic.head(5)
+
+titanic.describe()
+
+titanic.describe(include=['O'])
+
+titanic.columns
+
+titanic.isna()
+
+titanic.isna().sum()
+
+titanic.drop(['deck'], axis = 1, inplace = True)
+
+titanic.drop(['embarked'], axis = 1, inplace = True)
+titanic.drop(['embark_town'], axis = 1, inplace = True)
+
+
+titanic.head(5)
+
+# Age 열의 결측치를 평균값으로 대체
+mean_age = titanic['age'].mean()
+titanic['age'].fillna(mean_age, inplace=True)
+
+titanic
+
+#결측값의 합 확인
+titanic.isna().sum()
+
+# 동행자 수 특성 추가
+titanic['Companion'] = titanic['sibsp'] + titanic['parch']
+
+# 동행자 수 범주화 (Alone 특성 생성)
+titanic['Alone'] = (titanic['Companion'] == 0).astype(int)
+
+titanic
+
+# 가설 1 검증
+survival_rates = titanic.groupby('Alone')['survived'].mean()
+print(survival_rates)
+
+# 나이대별로 승객을 그룹화
+age_bins = [0, 12, 18, 30, 50, float('inf')]
+age_labels = ['Child', 'Teenager', 'Young Adult', 'Adult', 'Senior']
+
+titanic['AgeGroup'] = pd.cut(titanic['age'], bins=age_bins, labels=age_labels, right=False)
+
+titanic
+
+# 가설 2 검증
+survival_rates = titanic.groupby('AgeGroup')['survived'].mean()
+print(survival_rates)
+
+titanic['class'].unique()
+
+# 클래스를 레이블 인코딩으로 변환
+class_mapping = {'First': 0, 'Second': 1, 'Third': 2}
+titanic['class'] = titanic['class'].map(class_mapping)
+
+titanic
+
+from sklearn.preprocessing import LabelEncoder
+label_encoder = LabelEncoder()
+titanic['sex'] = label_encoder.fit_transform(titanic['sex'])
+
+titanic['sex']
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# 특성과 레이블 분리
+X = titanic[['age', 'sex', 'class']]
+y = titanic['survived']
+
+# 데이터 분할: 학습 데이터와 테스트 데이터
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 로지스틱 회귀 모델 생성 및 학습
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# 테스트 데이터로 예측
+y_pred = model.predict(X_test)
+
+# 정확도 평가
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
+scaler = StandardScaler()
+titanic['age'] = scaler.fit_transform(titanic[['age']])
+
+titanic['age']
+
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+
+# 히스토그램 생성
+plt.figure(figsize=(10, 4))
+
+plt.subplot(1, 2, 1)
+plt.hist(titanic['age'], bins=20, color='blue', alpha=0.7)
+plt.title('Normalized Age Histogram')
+plt.xlabel('age')
+plt.ylabel('Frequency')
+
+plt.tight_layout()
+plt.show()
+
+from sklearn.preprocessing import MinMaxScaler
+
+# MinMaxScaler를 이용한 최대-최소 정규화
+scaler = MinMaxScaler()
+titanic['fare'] = scaler.fit_transform(titanic[['fare']])
+
+print(titanic['fare'])
+
+
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
+# mtcars 데이터셋 불러오기
+mtcars = pd.read_csv('mtcars.csv')
+
+
+
+scaler = MinMaxScaler()
+
+# 'qsec' 컬럼을 최소최대척도로 변환
+mtcars['qsec_scaled'] = scaler.fit_transform(mtcars[['qsec']])
+mtcars['qsec_scaled']
+
+count = mtcars[mtcars['qsec_scaled'] > 0.5].shape[0]
+
+print(count)
+
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset('titanic')  #seaborn라이브러리의 내장 데이터셋 활용
+
+df
+
+#변수명 파악
+df.columns
+
+# 나이가 많은 순으로 데이터 정렬
+sorted_df = df.sort_values(by='age', ascending=False)
+
+top_10 = sorted_df.head(10)
+
+top_10
+
+# 'class'과 'sex' 열 선택
+result = top_10[['class', 'sex']]
+
+result
+
+import pandas as pd
+
+#age의 결측값 확인
+df['age'].isna().sum()
+
+# Age 열의 결측값 처리 (평균값으로 대체)
+mean_age = df['age'].mean()
+df['age'].fillna(mean_age, inplace=True)
+
+df['age'].isna().sum()
+
+from sklearn.preprocessing import StandardScaler
+
+# age 열을 표준정규분포로 스케일링
+scaler = StandardScaler()
+df['Age_scale'] = scaler.fit_transform(df[['age']])
+
+print(df['Age_scale'])
+
+# 데이터 새로 불러오기
+
+df = sns.load_dataset('raw/titanic')
+
+df
+
+# 연령대가 30대인 승객들을 추출
+age_30 = df[(df['age'] >= 30) & (df['age'] < 40)]
+
+# 생존한 승객들을 선택
+survived = age_30[age_30['survived'] == 1]
+
+# 필요한 열 선택
+result = survived[['pclass', 'sex', 'age', 'sibsp']]
+
+# 데이터프레임 출력
+result.head(5)
+
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset('titanic')  #데이터 셋 새로 불러오기
+
+average_age = df['age'].mean()
+df['age'].fillna(average_age, inplace=True)
+
+df['age'].isna().sum()
+
+# 데이터 분리
+survived_data = df[df['survived'] == 1]
+not_survived_data = df[df['survived'] == 0]
+
+# 나이 평균 구하기
+average_survived = survived_data['age'].mean()
+average_not_survived = not_survived_data['age'].mean()
+
+# 결과 출력 (소수점 둘째 자리까지)
+print(round(average_survived, 2))
+print(round(average_not_survived, 2))
+
+# 요금(Fare) 열의 최고값과 최저값 계산
+fare_max = df['fare'].max()
+fare_min = df['fare'].min()
+
+# 최고값과 최저값의 평균 계산
+fare_mean = (fare_max + fare_min) / 2
+# 결과 출력
+print(fare_mean)
+
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset('titanic') #데이터셋 새로 불러오기
+
+# 승객 필터링
+filtered_data = df[(df['survived'] == 1) & (df['pclass'] > 2)]
+filtered_data
+
+# 필요한 열 선택
+result = filtered_data[['pclass', 'age', 'sex']]
+
+result
+
+import pandas as pd
+
+df = pd.read_csv('Wine dataset.csv')
+df
+
+# 'Alcalinity of ash' 열의 평균값 계산
+mean = df['Alcalinity of ash'].mean()
+
+# 'Alcalinity of ash' 열의 표준편차 계산
+std = df['Alcalinity of ash'].std()
+
+# 결과 출력
+print(int(mean))
+print(int(std))
+
+top_5 = df.sort_values(by='Flavanoids', ascending=False).head(5)
+top_5
+
+# 데이터 프레임으로 구성
+result_df = top_5[['Color intensity', 'Alcohol']]
+
+# 결과 출력
+print(result_df)
+
+# 'Alcohol'이 14도 이상인 높은 도수의 와인들의 'Color intensity' 평균값 계산
+high = df[df['Alcohol'] >= 14]['Color intensity'].mean()
+
+# 'Alcohol'이 14도 미만인 낮은 도수의 와인들의 'Color intensity' 평균값 계산
+low = df[df['Alcohol'] < 14]['Color intensity'].mean()
+
+print(high)
+print(low)
+
+# 'Color intensity' 차이 계산
+difference = high- low
+print("{:.2f}".format(difference))
+
+# 'Class' 열이 1인 와인들의 'Flavanoids' 평균값 계산
+class1 = df[df['class'] == 1]['Flavanoids'].mean()
+
+# 'Class' 열이 3인 와인들의 'Flavanoids' 평균값 계산
+class3 = df[df['class'] == 3]['Flavanoids'].mean()
+
+print(class1)
+print(class3)
+
+# 'Flavanoids' 차이 계산
+result = class3 - class1
+
+# 결과 출력
+print(int(result))
+
+class_3 = df[df['class'] == 3]
+
+#상관관계를 계산하고, 절댓값을 취한다.
+corr_with_f = class_3.corr().abs()['Flavanoids']
+
+corr_with_f
+
+
+
+# 'Flavanoids'와 상관관계가 가장 높은 두 개의 컬럼
+
+result = corr_with_f.drop('Flavanoids').nlargest(2)
+
+print(result)
+
+
+import pandas as pd
+df = pd.read_csv("Pokemon.csv")
+
+df
+
+# Defense(방어력)이 상위 10개인 포켓몬을 선택하고, 해당 포켓몬의 이름과 Attack(공격력) 열을 추출
+top_10 = df.nlargest(10, 'Defense')[['Name', 'Attack']]
+
+top_10
+
+top_10 = top_10.sort_values(by='Attack', ascending=True)
+
+top_10
+
+# HP 평균산출
+grass_pokemon = df[df['Type 1'] == 'Grass']
+hp_grass = grass_pokemon['HP'].mean()
+
+rock_pokemon = df[df['Type 1'] == 'Rock']
+hp_rock = rock_pokemon['HP'].mean()
+
+print(hp_grass)
+print(hp_rock)
+
+# 두 평균값의 차이 구하기
+result = hp_grass - hp_rock
+
+print(int(result))
+
+legendary_mean_total = df[df['Legendary']]['Total'].mean()
+legendary_mean = df[df['Total'] >= legendary_mean_total]
+
+legendary_mean.describe()
+
+sorted_data = legendary_mean.sort_values(by='Total')
+speed_mean = sorted_data.head(100)['Speed'].mean()
+
+print(round(speed_mean, 2))
+
+# generation과 'HP', 'Attack', 'Defense', 'Speed' 간의 상관계수 행렬을 계산
+matrix = df[['Generation', 'HP', 'Attack', 'Defense', 'Speed']].corr()
+
+# generation과 다른 변수들 간의 상관계수의 절댓값 중 가장 큰 두 변수
+max_corr = matrix.iloc[0, 1:].abs().nlargest(2)
+
+max_corr
+
+fire_pokemon = df[df['Type 1'] == 'Fire']
+
+fire_pokemon.describe()
+
+attack_25 = fire_pokemon['Attack'].quantile(0.25)
+average = fire_pokemon[fire_pokemon['Attack'] <= attack_25]['Attack'].mean()
+
+print(average)
+
+# Total이 600이고 속성이 Rock인 포켓몬의 수
+rock_pokemon = df[(df['Total'] == 600) & (df['Type 1'] == 'Rock')].shape[0]
+
+print(rock_pokemon)
+
+

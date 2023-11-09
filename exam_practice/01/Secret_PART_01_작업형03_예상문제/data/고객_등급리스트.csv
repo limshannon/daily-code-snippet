@@ -1,0 +1,351 @@
+Customer_ID,ID,Name,Age,City,State,Region,Segment
+,12520,Claire Gute,6*,Henderson,Kentucky,South,Consumer
+,13045,Darrin Van Huff,3*,Los Angeles,California,West,Corporate
+,20335,Sean O'Donnell,6*,Fort Lauderdale,Florida,South,Consumer
+,11710,Brosina Hoffman,2*,Los Angeles,California,West,Consumer
+,10480,Andrew Allen,5*,Concord,North Carolina,South,Consumer
+,15070,Irene Maddox,6*,Seattle,Washington,West,Consumer
+,14815,Harold Pawlan,2*,Fort Worth,Texas,Central,Home Office
+,19075,Pete Kriz,4*,Madison,Wisconsin,Central,Consumer
+,10270,Alejandro Grove,1*,West Jordan,Utah,West,Consumer
+,21925,Zuschuss Donatelli,6*,San Francisco,California,West,Consumer
+,16585,Ken Black,6*,Fremont,Nebraska,Central,Corporate
+,20065,Sandra Flanagan,4*,Philadelphia,Pennsylvania,East,Consumer
+,13870,Emily Burns,3*,Orem,Utah,West,Consumer
+,13945,Eric Hoffmann,2*,Los Angeles,California,West,Consumer
+,21520,Tracy Blumstein,4*,Philadelphia,Pennsylvania,East,Consumer
+,17560,Matt Abelman,1*,Houston,Texas,Central,Home Office
+,14485,Gene Hale,2*,Richardson,Texas,Central,Corporate
+,20710,Steve Nguyen,4*,Houston,Texas,Central,Home Office
+,16930,Linda Cazamias,3*,Naperville,Illinois,Central,Corporate
+,19885,Ruben Ausman,5*,Los Angeles,California,West,Corporate
+,14080,Erin Smith,2*,Melbourne,Florida,South,Corporate
+,18715,Odella Nelson,2*,Eagan,Minnesota,Central,Corporate
+,18865,Patrick O'Donnell,6*,Westland,Michigan,Central,Consumer
+,16900,Lena Hernandez,6*,Dover,Delaware,East,Consumer
+,13000,Darren Powers,4*,New Albany,Indiana,Central,Consumer
+,15265,Janet Molinari,2*,New York City,New York,East,Corporate
+,21055,Ted Butterfield,3*,Troy,New York,East,Consumer
+,16720,Kunst Miller,6*,Los Angeles,California,West,Consumer
+,18970,Paul Stevenson,3*,Chicago,Illinois,Central,Home Office
+,11590,Brendan Sweed,4*,Gilbert,Arizona,West,Corporate
+,16270,Karen Daniels,5*,Springfield,Virginia,South,Consumer
+,14980,Henry MacAllister,3*,New York City,New York,East,Consumer
+,15745,Joel Eaton,2*,Memphis,Tennessee,South,Consumer
+,16600,Ken Brennan,2*,Houston,Texas,Central,Corporate
+,20770,Stewart Carmichael,1*,Decatur,Alabama,South,Corporate
+,13690,Duane Noonan,4*,San Francisco,California,West,Consumer
+,16105,Julie Creighton,5*,Durham,North Carolina,South,Corporate
+,12400,Christopher Schild,3*,Chicago,Illinois,Central,Home Office
+,18895,Paul Gonzalez,6*,Rochester,Minnesota,Central,Consumer
+,14455,Gary Mitchum,6*,Houston,Texas,Central,Home Office
+,15685,Jim Sink,3*,Los Angeles,California,West,Corporate
+,16315,Karl Braun,7*,Minneapolis,Minnesota,Central,Consumer
+,19705,Roger Barcio,6*,Portland,Oregon,West,Home Office
+,18775,Parhena Norris,3*,New York City,New York,East,Home Office
+,16345,Katherine Ducich,3*,San Francisco,California,West,Consumer
+,13855,Elpida Rittenbach,5*,Saint Paul,Minnesota,Central,Corporate
+,19465,Rick Bensley,1*,Chicago,Illinois,Central,Home Office
+,14470,Gary Zandusky,6*,Rochester,Minnesota,Central,Consumer
+,16870,Lena Cacioppo,6*,Aurora,Colorado,West,Consumer
+,15250,Janet Martin,6*,Charlotte,North Carolina,South,Consumer
+,19060,Pete Armstrong,3*,Orland Park,Illinois,Central,Home Office
+,12805,Cynthia Voltz,5*,New York City,New York,East,Corporate
+,12565,Clay Ludtke,3*,Urbandale,Iowa,Central,Consumer
+,19960,Ryan Crowe,3*,Columbus,Ohio,East,Consumer
+,13090,Dave Kipp,2*,Seattle,Washington,West,Consumer
+,14650,Greg Guthrie,5*,Bristol,Tennessee,South,Corporate
+,20725,Steven Cartwright,2*,Wilmington,Delaware,East,Consumer
+,10180,Alan Dominguez,5*,Houston,Texas,Central,Home Office
+,19165,Philip Fox,3*,Bloomington,Illinois,Central,Consumer
+,21610,Troy Staebel,3*,Phoenix,Arizona,West,Consumer
+,16975,Lindsay Shagiari,6*,Los Angeles,California,West,Home Office
+,13585,Dorothy Wardle,6*,Columbus,Ohio,East,Corporate
+,16885,Lena Creighton,3*,Roseville,California,West,Consumer
+,15895,Jonathan Doherty,5*,Philadelphia,Pennsylvania,East,Corporate
+,19975,Sally Hughsby,6*,San Francisco,California,West,Corporate
+,20080,Sandra Glassco,5*,Independence,Missouri,Central,Consumer
+,14920,Helen Andreada,4*,Pasadena,California,West,Consumer
+,17680,Maureen Gastineau,2*,Newark,Ohio,East,Home Office
+,16165,Justin Ellison,4*,Franklin,Wisconsin,Central,Corporate
+,21025,Tamara Willingham,6*,Scottsdale,Arizona,West,Home Office
+,20650,Stephanie Phelps,1*,San Jose,California,West,Corporate
+,18490,Neil Knudson,6*,Seattle,Washington,West,Home Office
+,13060,Dave Brooks,5*,Seattle,Washington,West,Consumer
+,18670,Nora Paige,6*,Edmond,Oklahoma,Central,Consumer
+,21070,Ted Trevino,  6*,Los Angeles,California,West,Consumer
+,13960,Eric Murdock,4*,Philadelphia,Pennsylvania,East,Consumer
+,19900,Ruben Dartt,2*,Carlsbad,New Mexico,West,Consumer
+,17740,Max Jones,4*,Seattle,Washington,West,Consumer
+,11140,Becky Martin,6*,San Antonio,Texas,Central,Consumer
+,12130,Chad Sievert,5*,Los Angeles,California,West,Consumer
+,15400,Jennifer Braxton,3*,Chicago,Illinois,Central,Corporate
+,20500,Shirley Jackson,6*,Houston,Texas,Central,Consumer
+,15640,Jim Kriz,3*,New York City,New York,East,Home Office
+,13150,David Kendrick,2*,Decatur,Illinois,Central,Corporate
+,19675,Robert Marley,5*,Monroe,Louisiana,South,Home Office
+,19990,Sally Knutson,4*,Fairfield,Connecticut,East,Consumer
+,14290,Frank Merwin,4*,Los Angeles,California,West,Home Office
+,10360,Alice McCarthy,4*,Grand Prairie,Texas,Central,Corporate
+,17470,Mark Packer,6*,New York City,New York,East,Home Office
+,17515,Mary Zewe,5*,Redlands,California,West,Corporate
+,12025,Cassandra Brandow,4*,Hamilton,Ohio,East,Consumer
+,21685,Valerie Mitchum,6*,Westfield,New Jersey,East,Home Office
+,14365,Fred Hopkins,4*,Philadelphia,Pennsylvania,East,Corporate
+,17305,Maria Bertelson,4*,Akron,Ohio,East,Consumer
+,11755,Bruce Stewart,5*,Denver,Colorado,West,Consumer
+,17140,Logan Currie,2*,Dallas,Texas,Central,Consumer
+,14890,Heather Kirkland,2*,Franklin,Tennessee,South,Corporate
+,16810,Laurel Elliston,6*,Whittier,California,West,Consumer
+,15985,Joseph Holt,5*,Saginaw,Michigan,Central,Consumer
+,17980,Michael Stewart,6*,Dallas,Texas,Central,Corporate
+,21775,Victoria Wilson,6*,Medina,Ohio,East,Corporate
+,15910,Jonathan Howell,4*,Los Angeles,California,West,Consumer
+,15925,Joni Blumstein,2*,Dublin,Ohio,East,Consumer
+,13180,David Smith,4*,Detroit,Michigan,Central,Corporate
+,21670,Valerie Dominguez,6*,Columbia,Tennessee,South,Consumer
+,14035,Erin Ashbrook,6*,Charlotte,North Carolina,South,Corporate
+,13120,David Bremer,6*,Santa Clara,California,West,Corporate
+,16645,Ken Lonsdale,4*,Chicago,Illinois,Central,Consumer
+,13480,Dianna Wilson,2*,Lakeville,Minnesota,Central,Home Office
+,17155,Logan Haushalter,4*,San Francisco,California,West,Consumer
+,16540,Kelly Collister,3*,San Diego,California,West,Consumer
+,13315,Delfina Latchford,4*,New York City,New York,East,Consumer
+,12880,Dan Reichenbach,6*,Chicago,Illinois,Central,Corporate
+,12670,Craig Carreira,2*,New York City,New York,East,Consumer
+,13600,Dorris liebe,6*,Pasadena,Texas,Central,Corporate
+,20290,Sean Braxton,4*,Houston,Texas,Central,Corporate
+,19825,Roy Collins,5*,Chicago,Illinois,Central,Consumer
+,10210,Alan Hwang,5*,Brentwood,California,West,Consumer
+,12535,Claudia Bergmann,6*,Chapel Hill,North Carolina,South,Corporate
+,12310,Christine Abelman,6*,Cincinnati,Ohio,East,Corporate
+,16690,Kristen Hastings,3*,San Francisco,California,West,Corporate
+,10990,Barry Blumstein,4*,Inglewood,California,West,Corporate
+,10495,Andrew Gjertsen,2*,Philadelphia,Pennsylvania,East,Corporate
+,15280,Jas O'Carroll,3*,Los Angeles,California,West,Consumer
+,10195,Alan Haines,6*,Tamarac,Florida,South,Corporate
+,18565,Nick Zandusky,2*,Columbus,Ohio,East,Home Office
+,16555,Kelly Lampkin,6*,Colorado Springs,Colorado,West,Corporate
+,10225,Alan Schoenberger,3*,New York City,New York,East,Corporate
+,12625,Corey Roper,4*,Lakewood,New Jersey,East,Home Office
+,20395,Shahid Hopkins,6*,Arlington,Virginia,South,Consumer
+,11185,Ben Peterman,4*,Arvada,Colorado,West,Corporate
+,21205,Thomas Seio,2*,Hackensack,New Jersey,East,Corporate
+,10525,Andy Gerbode,6*,Saint Petersburg,Florida,South,Corporate
+,20860,Sung Pak,3*,Philadelphia,Pennsylvania,East,Corporate
+,18445,Nathan Mautz,2*,New York City,New York,East,Home Office
+,14230,Frank Atkinson,3*,Long Beach,California,West,Corporate
+,14620,Grace Kelly,3*,Hesperia,California,West,Corporate
+,13510,Don Jones,6*,Murfreesboro,Tennessee,South,Corporate
+,18850,Patrick O'Brill,5*,Philadelphia,Pennsylvania,East,Consumer
+,15850,John Lucas,7*,Philadelphia,Pennsylvania,East,Consumer
+,13615,Doug Bickford,1*,Los Angeles,California,West,Consumer
+,10420,Alyssa Crouse,6*,San Francisco,California,West,Corporate
+,12550,Clay Cheatham,4*,San Francisco,California,West,Consumer
+,20995,Tamara Dahlen,1*,Lowell,Massachusetts,East,Consumer
+,10060,Adam Bellavance,2*,New York City,New York,East,Home Office
+,15505,Jeremy Lonsdale,4*,New York City,New York,East,Consumer
+,21745,Victoria Brennan,2*,Columbus,Georgia,South,Corporate
+,16435,Katrina Willman,4*,New York City,New York,East,Consumer
+,16060,Julia Dunbar,7*,San Francisco,California,West,Consumer
+,17905,Michael Kennedy,2*,Manchester,Connecticut,East,Corporate
+,14755,Guy Thornton,5*,Harlingen,Texas,Central,Consumer
+,10900,Arthur Gainer,5*,Tucson,Arizona,West,Consumer
+,18280,Muhammed MacIntyre,5*,Quincy,Illinois,Central,Corporate
+,10405,Allen Rosenblatt,6*,Franklin,Massachusetts,East,Corporate
+,19915,Russell Applegate,4*,Houston,Texas,Central,Consumer
+,10285,Alejandro Savely,5*,San Francisco,California,West,Corporate
+,16780,Laura Armstrong,5*,Taylor,Michigan,Central,Corporate
+,13435,Denny Ordway,2*,Pembroke Pines,Florida,South,Consumer
+,13225,Dean Katz,3*,Philadelphia,Pennsylvania,East,Corporate
+,18430,Nathan Gelder,5*,Cincinnati,Ohio,East,Consumer
+,18190,Mike Vittorini,6*,New York City,New York,East,Consumer
+,15115,Jack Garza,6*,Des Moines,Washington,West,Consumer
+,11095,Bart Pistole,3*,Peoria,Illinois,Central,Corporate
+,21730,Victor Preis,3*,Las Vegas,Nevada,West,Home Office
+,20140,Saphhira Shifley,3*,Warwick,Rhode Island,East,Corporate
+,10675,Anna Gayman,6*,Houston,Texas,Central,Consumer
+,17185,Luke Foster,3*,Miami,Florida,South,Consumer
+,19840,Roy Franzosisch,5*,New York City,New York,East,Consumer
+,16510,Keith Herrera,2*,San Francisco,California,West,Consumer
+,16675,Kimberly Carter,3*,Seattle,Washington,West,Corporate
+,12010,Caroline Jumper,6 *,Huntington Beach,California,West,Consumer
+,19150,Philip Brown,3*,Los Angeles,California,West,Consumer
+,17965,Michael Paige,1*,Lawrence,Massachusetts,East,Corporate
+,18385,Natalie Fritzler,2*,Jackson,Mississippi,South,Consumer
+,20485,Shirley Daniels,7    *,New Rochelle,New York,East,Home Office
+,16630,Ken Heidel,3*,San Antonio,Texas,Central,Corporate
+,19795,Ross Baird,6*,Gastonia,North Carolina,South,Home Office
+,18160,Mike Kennedy, 2*,Jacksonville,Florida,South,Consumer
+,19180,Philisse Overcash,4*,Chicago,Illinois,Central,Home Office
+,11545,Brenda Bowman,6*,Houston,Texas,Central,Corporate
+,21595,Troy Blackwell,5*,Columbus,Indiana,Central,Consumer
+,19360,Raymond Buch,7*,Auburn,New York,East,Consumer
+,13705,Ed Braxton,4*,Akron,Ohio,East,Corporate
+,20095,Sanjit Chand,2*,Concord,California,West,Consumer
+,21040,Tanja Norvell,3*,Phoenix,Arizona,West,Home Office
+,15940,Joni Sundaresam,2*,Park Ridge,Illinois,Central,Home Office
+,17785,Maya Herman,5*,Lindenhurst,New York,East,Corporate
+,15520,Jeremy Pistek,5*,San Francisco,California,West,Consumer
+,15475,Jeremy Ellison,3*,Troy,New York,East,Consumer
+,15805,John Grady,2*,New York City,New York,East,Corporate
+,21865,Xylona Preis,3*,San Diego,California,West,Consumer
+,14065,Erin Mull,4*,New York City,New York,East,Consumer
+,18070,Michelle Tran,6*,Los Angeles,California,West,Home Office
+,20830,Sue Ann Reed,3*,Chicago,Illinois,Central,Consumer
+,11905,Carl Weiss,3*,Huntsville,Texas,Central,Home Office
+,10960,Astrea Jones,3*,Rochester,New York,East,Consumer
+,20590,Sonia Sunley,5*,Seattle,Washington,West,Consumer
+,19780,Rose O'Brian,2*,Memphis,Tennessee,South,Consumer
+,17350,Maribeth Dona,3*,Fayetteville,Arkansas,South,Consumer
+,17380,Maribeth Yedwab,7*,Parker,Colorado,West,Corporate
+,12385,Christopher Martinez,1*,Atlanta,Georgia,South,Consumer
+,17245,Lynn Smith,5*,Gladstone,Missouri,Central,Consumer
+,11515,Bradley Nguyen,6*,Los Angeles,California,West,Consumer
+,13210,Dean Braden,4*,Houston,Texas,Central,Consumer
+,17605,Matt Connell,4*,Detroit,Michigan,Central,Corporate
+,11605,Brian Dahlen,4*,Lawrence,Massachusetts,East,Consumer
+,18790,Patricia Hirasaki,5*,Lakeland,Florida,South,Home Office
+,18145,Mike Gockenbach,5*,Philadelphia,Pennsylvania,East,Consumer
+,16240,Karen Bern,4*,Los Angeles,California,West,Corporate
+,15340,Jasper Cacioppo,3*,Los Angeles,California,West,Consumer
+,19615,Rob Lucas,5*,Montgomery,Alabama,South,Consumer
+,10375,Allen Armold,2*,Mesa,Arizona,West,Consumer
+,13915,Emily Phan,3*,Chicago,Illinois,Central,Consumer
+,12985,Darren Koutras,5*,Henderson,Kentucky,South,Consumer
+,11500,Bradley Drucker,4*,Green Bay,Wisconsin,Central,Consumer
+,17065,Liz MacKendrick,3*,Springfield,Ohio,East,Consumer
+,10135,Adrian Shami,6*,New York City,New York,East,Home Office
+,11320,Bill Donatelli,6*,San Francisco,California,West,Consumer
+,14710,Greg Tran,6*,Houston,Texas,Central,Consumer
+,10945,Ashley Jarboe,6*,Wilmington,North Carolina,South,Consumer
+,18730,Olvera Toch,3*,Los Angeles,California,West,Consumer
+,17080,Liz Pelletier,2*,San Francisco,California,West,Consumer
+,12775,Cynthia Arntzen,5*,Tampa,Florida,South,Consumer
+,15490,Jeremy Farry,3*,Seattle,Washington,West,Consumer
+,14320,Frank Preis,2*,Los Angeles,California,West,Consumer
+,13840,Ellis Ballard,2*,Seattle,Washington,West,Corporate
+,15415,Jennifer Ferguson,4*,New York City,New York,East,Consumer
+,20200,Sarah Foster,3*,Marysville,Washington,West,Consumer
+,21640,Trudy Glocke,4*,Long Beach,California,West,Consumer
+,11950,Carlos Soltero,1*,Chicago,Illinois,Central,Consumer
+,12145,Charles Crestani,2*,Los Angeles,California,West,Consumer
+,13465,Dianna Vittorini,6*,Denver,Colorado,West,Consumer
+,11725,Bruce Degenhardt,3*,Richmond,Kentucky,South,Consumer
+,21910,Zuschuss Carroll,6*,Salem,Oregon,West,Consumer
+,17830,Melanie Seite,6*,Laredo,Texas,Central,Consumer
+,16915,Lena Radford,3*,San Diego,California,West,Consumer
+,21130,Theone Pippenger,6*,Philadelphia,Pennsylvania,East,Consumer
+,12205,Chloris Kastensmidt,6*,Philadelphia,Pennsylvania,East,Consumer
+,10240,Alan Shonely,6*,Tampa,Florida,South,Consumer
+,10510,Andrew Roberts,5*,Philadelphia,Pennsylvania,East,Consumer
+,18655,Nona Balk,4*,Dallas,Texas,Central,Corporate
+,14590,Giulietta Dortch,6*,Philadelphia,Pennsylvania,East,Corporate
+,12595,Clytie Kelty,6*,Grove City,Ohio,East,Consumer
+,18355,Nat Gilpin,5*,New York City,New York,East,Corporate
+,12265,Christina Anderson,4*,Chicago,Illinois,Central,Consumer
+,20965,Sylvia Foulston,6*,Dearborn,Michigan,Central,Corporate
+,17800,Meg O'Connel,2*,New York City,New York,East,Home Office
+,10735,Annie Thurman,3*,Seattle,Washington,West,Consumer
+,14380,Fred McMath,3*,Aurora,Colorado,West,Consumer
+,13420,Denny Joy,2*,Warner Robins,Georgia,South,Corporate
+,17725,Max Engle,5*,Aurora,Colorado,West,Consumer
+,16150,Justin Deggeller,3*,Minneapolis,Minnesota,Central,Corporate
+,15835,John Lee,5*,Mission Viejo,California,West,Consumer
+,20305,Sean Christensen,3*,Rochester Hills,Michigan,Central,Consumer
+,12430,Chuck Clark,6*,Columbus,Indiana,Central,Home Office
+,10825,Anthony Rawles,3*,Vancouver,Washington,West,Corporate
+,20740,Steven Roelle,1*,New York City,New York,East,Home Office
+,12730,Craig Reiter,2*,Columbus,Ohio,East,Consumer
+,14125,Eugene Hildebrand,4*,Aurora,Illinois,Central,Home Office
+,20545,Sibella Parks,6*,New York City,New York,East,Corporate
+,21235,Tiffany House,2*,Dallas,Texas,Central,Corporate
+,19390,Resi Polking,4*,Cleveland,Ohio,East,Consumer
+,19570,Rob Beeghly,5*,Columbus,Indiana,Central,Consumer
+,11980,Carol Darley,6*,Tyler,Texas,Central,Consumer
+,13630,Doug Jacobs,4*,New York City,New York,East,Consumer
+,14635,Grant Thornton,1*,Burlington,North Carolina,South,Corporate
+,17845,Michael Chen,5*,Jackson,Mississippi,South,Consumer
+,19285,Ralph Arnett,4*,New York City,New York,East,Consumer
+,18325,Naresj Patel,7*,Waynesboro,Virginia,South,Consumer
+,10165,Alan Barnes,2*,Los Angeles,California,West,Consumer
+,15550,Jesus Ocampo,5*,Chester,Pennsylvania,East,Home Office
+,15370,Jay Kimmel,2*,Long Beach,California,West,Consumer
+,11470,Brad Norvell,2*,Cary,North Carolina,South,Corporate
+,13165,David Philippe,5*,New York City,New York,East,Consumer
+,21550,Tracy Hopkins,4*,New York City,New York,East,Home Office
+,10915,Arthur Prichep,6*,Palm Coast,Florida,South,Consumer
+,19765,Roland Schwarz,4*,Mount Vernon,New York,East,Corporate
+,20365,Seth Vernon,2*,Dover,Delaware,East,Consumer
+,12325,Christine Kargatis,5*,Orem,Utah,West,Home Office
+,19810,Ross DeVincentis,3*,Los Angeles,California,West,Home Office
+,17545,Mathew Reese,3*,Philadelphia,Pennsylvania,East,Home Office
+,20695,Steve Chapman,4*,Hialeah,Florida,South,Corporate
+,15355,Jay Fein,7*,Austin,Texas,Central,Consumer
+,13900,Emily Grady,6*,Oceanside,New York,East,Consumer
+,13030,Darrin Sayre,6*,Seattle,Washington,West,Home Office
+,19195,Phillina Ober,4*,Naperville,Illinois,Central,Home Office
+,20875,Sung Shariari,1*,Dallas,Texas,Central,Consumer
+,19105,Peter Buhler,3*,Evanston,Illinois,Central,Consumer
+,19735,Roland Fjeld,3*,Trenton,Michigan,Central,Consumer
+,21895,Yoseph Carroll,4*,San Francisco,California,West,Corporate
+,13285,Debra Catini,4*,Cottage Grove,Minnesota,Central,Consumer
+,12340,Christine Phan,3*,New York City,New York,East,Corporate
+,11020,Barry Franzosisch,6*,Green Bay,Wisconsin,Central,Corporate
+,17020,Lisa Hazard,6*,Columbus,Ohio,East,Consumer
+,12250,Chris Selesnick,5*,Bossier City,Louisiana,South,Corporate
+,10795,Anthony Johnson,2*,Saint Petersburg,Florida,South,Corporate
+,11245,Benjamin Venier,4*,Des Moines,Iowa,Central,Corporate
+,12865,Dan Lawera,2*,Cincinnati,Ohio,East,Consumer
+,11785,Bryan Mills,3*,Columbus,Ohio,East,Consumer
+,17110,Liz Thompson,5*,Lancaster,California,West,Consumer
+,15730,Joe Kamberova,6*,Asheville,North Carolina,South,Consumer
+,14020,Erica Smith,4*,San Francisco,California,West,Consumer
+,19495,Rick Hansen,1*,Rochester,Minnesota,Central,Consumer
+,11920,Carlos Daly,5*,Lake Elsinore,California,West,Consumer
+,14935,Helen Wasserman,5*,San Diego,California,West,Corporate
+,18130,Mike Caudle,5*,Monroe,Louisiana,South,Corporate
+,14440,Gary McGarr,1*,San Francisco,California,West,Consumer
+,19015,Pauline Johnson,4 *,Santa Ana,California,West,Consumer
+,11110,Bart Watters,5*,Milwaukee,Wisconsin,Central,Corporate
+,21325,Toby Ritter,4*,Belleville,New Jersey,East,Consumer
+,18820,Patrick Gardner,3*,San Francisco,California,West,Consumer
+,15175,James Lanier,2*,Columbia,Tennessee,South,Home Office
+,11650,Brian Moss,4*,New York City,New York,East,Corporate
+,14095,Eudokia Martin,5*,Los Angeles,California,West,Corporate
+,10885,Art Foster,4*,Louisville,Kentucky,South,Consumer
+,14725,Guy Armstrong,3*,Lorain,Ohio,East,Consumer
+,12760,Cyma Kinney,1*,Linden,New Jersey,East,Corporate
+,13105,Dave Poirier,6*,Salinas,California,West,Corporate
+,11260,Berenike Kampe,3*,New York City,New York,East,Consumer
+,20125,Sanjit Jacobs,3*,New Brunswick,New Jersey,East,Home Office
+,12445,Chuck Magee,2*,San Francisco,California,West,Consumer
+,10780,Anthony Jacobs,4*,Springfield,Virginia,South,Corporate
+,16945,Linda Southworth,2* ,Philadelphia,Pennsylvania,East,Corporate
+,14740,Guy Phonely,2*,Lancaster,Pennsylvania,East,Corporate
+,18910,Paul Knutson,4*,Philadelphia,Pennsylvania,East,Home Office
+,20005,Sally Matthias,5*,New York City,New York,East,Consumer
+,10765,Anthony Garverick,4*,Philadelphia,Pennsylvania,East,Home Office
+,19135,Peter McVee,6*,Detroit,Michigan,Central,Home Office
+,16840,Lauren Leatherbury,2*,Rochester,New York,East,Consumer
+,15595,Jill Stevenson,6*,Los Angeles,California,West,Corporate
+,13735,Ed Ludwig,4*,Columbia,Maryland,East,Home Office
+,18745,Pamela Coakley,2*,San Francisco,California,West,Corporate
+,15040,Hunter Lopez,6*,Houston,Texas,Central,Consumer
+,17365,Maribeth Schnelling,5*,Detroit,Michigan,Central,Consumer
+,14530,George Bell,4*,Auburn,New York,East,Corporate
+,16210,Justin Ritter,6*,Springfield,Ohio,East,Corporate
+,11335,Bill Eplett,2*,Jackson,Michigan,Central,Home Office
+,20050,Sample Company A,3*,Norwich,Connecticut,East,Home Office
+,19630,Rob Williams,2*  ,Dallas,Texas,Central,Corporate
+,20110,Sanjit Engle,2*,New York City,New York,East,Consumer
+,10075,Adam Hart,2*,New York City,New York,East,Corporate
+,15535,Jessica Myrick,3*,Philadelphia,Pennsylvania,East,Consumer
+,15760,Joel Jenkins,5*,Springfield,Virginia,South,Home Office
+,19300,Ralph Kennedy,2*,Philadelphia,Pennsylvania,East,Consumer
+,12040,Catherine Glotzbach,2*,Philadelphia,Pennsylvania,East,Home Office
+,19270,Rachel Payne,4*,Riverside,California,West,Corporate
+,16255,Karen Carlisle,2*,San Francisco,California,West,Corporate
+,16360,Katherine Hughes,6*,Philadelphia,Pennsylvania,East,Consumer
+,14665,Greg Hansen,6  *,Round Rock,Texas,Central,Consumer
+,20275,Scott Williamson,3*,Jackson,Mississippi,South,Consumer
