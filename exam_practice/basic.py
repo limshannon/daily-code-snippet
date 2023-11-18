@@ -21,3 +21,6 @@ print(len(res[res>0.5]))
 #print(narray.where(>=0.5))
 #print(help(MinMaxScaler))
 
+#2백화점 고객 데이터로 성별예측하기.
+#data/customer_train.csv
+#data/customer_test.csv
