@@ -1,0 +1,787 @@
+import pandas as pd
+
+df = pd.read_csv("avocado.csv")
+
+df
+
+df.columns
+
+df.info()
+
+
+# AveragePrice가 1 이하 필터링
+filtered_data = df[df['AveragePrice'] <= 1]
+
+# 'type' 열 값의 개수
+type_counts = filtered_data['type'].value_counts()
+
+# 'conventional'와 'organic'의 비율 계산
+con = int(type_counts.get('conventional', 0) / len(filtered_data) * 100)
+org = int(type_counts.get('organic', 0) / len(filtered_data) * 100)
+
+print(con)
+print(org)
+
+# 'type'이 'conventional'인 경우의 'Total Volume' 최소값 구하기
+conventional_min = df[df['type'] == 'conventional']['Total Volume'].min()
+
+# 'type'이 'organic'인 경우의 'Total Volume' 최대값 구하기
+organic_max = df[df['type'] == 'organic']['Total Volume'].max()
+
+# 두 값의 차 계산하고 정수로 변환
+volume_difference = int(organic_max - conventional_min)
+
+print(volume_difference)
+
+# 지역별 평균 가격과 평균 소비량 계산
+region_volume = df.groupby('region').agg({'AveragePrice': 'mean', 'Total Volume': 'mean'})
+
+# 평균 소비량을 기준으로 내림차순 정렬
+sorted_regions = region_volume.sort_values('Total Volume', ascending=False)
+
+# 상위 다섯 지역과 하위 다섯 지역 선택
+top_5 = sorted_regions.head(5)
+bottom_5 = sorted_regions.tail(5)
+
+# 선택된 지역들의 평균 가격 계산
+top_5_avg = top_5['AveragePrice']
+bottom_5_avg = bottom_5['AveragePrice']
+
+# 가장 높은 다섯 지역의 평균 가격과 가장 낮은 다섯 지역의 평균 가격의 차
+price_difference = top_5_avg.mean() - bottom_5_avg.mean()
+
+print("{:.2f}".format(price_difference))
+
+import pandas as pd
+
+# 학습용 데이터 로드
+x_train = pd.read_csv('x_train.csv')
+y_train = pd.read_csv('y_train.csv')
+
+# 평가용 데이터 로드
+x_test = pd.read_csv('x_test.csv')
+
+x_train
+
+x_train.info()
+
+x_train.describe()
+
+x_train.isnull().sum()
+
+# 각 열의 평균값 계산
+mean_values = x_train.mean()
+
+# 결측치를 해당 열의 평균값으로 채우기
+x_train = x_train.fillna(mean_values)
+x_test = x_test.fillna(mean_values)
+
+x_train.isnull().sum()
+
+#표준편차가 큰 Magnesium을 표준정규화 한다.
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+# 표준정규화할 컬럼 선택
+x_train['Magnesium'] = scaler.fit_transform(x_train[['Magnesium']])
+x_test['Magnesium'] = scaler.transform(x_test[['Magnesium']])
+
+# 결과 출력
+print(x_train)
+
+from sklearn.model_selection import train_test_split
+# 훈련 데이터와 테스트 데이터 분리
+X_train, X_test, y_train, y_test = train_test_split(x_train, y_train, test_size=0.2, random_state=29)
+
+print("X_train shape:", X_train.shape)
+print("X_test shape:", X_test.shape)
+print("y_train shape:", y_train.shape)
+print("y_test shape:", y_test.shape)
+
+
+import xgboost as xgb
+from xgboost import XGBClassifier
+from sklearn.metrics import f1_score
+
+
+# XGBoost 모델 생성 및 학습
+xgb_model = xgb.XGBClassifier(objective='multi:softmax', num_class=6, random_state=42)
+xgb_model.fit(X_train, y_train)
+
+# 예측
+xgb_predictions = xgb_model.predict(x_test)[:29]
+
+# F1 스코어 평가
+xgb_f1_score = f1_score(y_test, xgb_predictions, average='micro')
+
+print(xgb_f1_score)
+
+
+from sklearn.neighbors import KNeighborsClassifier
+# KNN 모델 생성 및 학습
+knn_model = KNeighborsClassifier()
+knn_model.fit(X_train, y_train)
+knn_predictions = knn_model.predict(x_test)[:29]
+
+knn_f1_score = f1_score(y_test, knn_predictions, average='micro')
+print(knn_f1_score)
+
+# 예측 결과를 데이터프레임으로 생성
+df = pd.DataFrame({'Predictions': xgb_predictions})
+
+# CSV 파일로 저장
+df.to_csv('모의고사1.csv', index=False)
+
+import pandas as pd
+import numpy as np
+
+# 학습용 데이터 로드
+df = pd.read_csv('1-3.csv')
+
+change_mean = round(np.mean(df["After_Weight"] - df["Before_Weight"]), 2)
+print(change_mean)
+
+from scipy.stats import ttest_rel
+
+# 쌍체표본 t-검정 실행
+t_statistic, p_value = ttest_rel(df['After_Weight'], df['Before_Weight'])
+
+# 결과 출력
+t_statistic = round(t_statistic, 4)
+
+print(t_statistic)
+
+
+
+print(p_value)
+
+import pandas as pd
+
+df = pd.read_csv("Students.csv")
+
+df
+
+df.columns
+
+df.info()
+
+
+df.nunique()
+
+# 'Total' 컬럼 추가
+df['Total'] = df['math score'] + df['reading score'] + df['writing score']
+
+# 각 그룹(레이스/민족)의 'Total' 합계 계산하고 가장 높은 합계를 가진 그룹 찾기
+highest = df.groupby('race/ethnicity')['Total'].sum().idxmax()
+
+print(highest)
+
+
+# math score를 기준으로 정렬
+df_sorted = df.sort_values('math score')
+
+# 학생 수 계산
+total = len(df_sorted)
+total_per= int(total * 0.1)
+
+#writing score 평균 계산
+top_avg = df_sorted.head(total_per)['writing score'].mean()
+bottom_avg = df_sorted.tail(total_per)['writing score'].mean()
+
+# 두 그룹의 writing score 평균 차이 계산하고 정수로 변환
+score_difference = int(top_avg - bottom_avg)
+
+print(score_difference)
+
+
+from sklearn.preprocessing import LabelEncoder
+
+lunch_mapping = {'standard': 1, 'free/reduced': 0}
+df['lunch'] = df['lunch'].map(lunch_mapping)
+
+
+# 상관 계수 계산
+corr = df['lunch'].corr(df['Total'])
+
+print(round(corr,2))
+
+import pandas as pd
+
+# 학습용 데이터 로드
+x_train = pd.read_csv('card_x_train.csv')
+y_train = pd.read_csv('card_y_train.csv')
+
+# 평가용 데이터 로드
+x_test = pd.read_csv('card_x_test.csv')
+
+x_train
+
+x_train.describe()
+
+x_train.columns
+
+x_train.isnull().sum()
+
+
+# 각 컬럼의 최빈값 구하기
+mode_values = x_test.mode().iloc[0]
+
+# 결측값을 최빈값으로 채우기
+x_test2 = x_test.fillna(mode_values)
+
+print(x_test2.isnull().sum())
+
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+
+# Time 컬럼 정규화
+x_train_time = x_train[['Time']]
+x_train_time_normalized = scaler.fit_transform(x_train_time)
+
+# 정규화된 값을 다시 DataFrame으로 변환
+x_train2 = x_train.copy()  # 원본 DataFrame 복사
+x_train2['Time'] = x_train_time_normalized
+
+# 결과 출력
+print(x_train2.head())
+
+from sklearn.model_selection import train_test_split
+# 훈련 데이터와 테스트 데이터 분리
+X_train, X_test, y_train, y_test = train_test_split(x_train2, y_train, test_size=0.2, random_state=29)
+
+print("X_train shape:", X_train.shape)
+print("X_test shape:", X_test.shape)
+print("y_train shape:", y_train.shape)
+print("y_test shape:", y_test.shape)
+
+
+X_train shape: (20015, 30)
+X_test shape: (5004, 30)
+y_train shape: (20015, 1)
+y_test shape: (5004, 1)
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 모델 생성 및 학습
+logreg_model = LogisticRegression(random_state=42)
+logreg_model.fit(X_train, y_train)
+
+# 예측
+logreg_predictions = logreg_model.predict(x_test2)[:5004]
+
+# 정확도로 평가
+logreg_accuracy = accuracy_score(y_test, logreg_predictions)
+print(logreg_accuracy)
+
+
+rf_model = RandomForestClassifier(random_state=42)
+rf_model.fit(X_train, y_train)
+
+rf_predictions = rf_model.predict(x_test)[:5004]
+rf_accuracy = accuracy_score(y_test, rf_predictions)
+print(rf_accuracy)
+
+# 예측 결과를 데이터프레임으로 생성
+df = pd.DataFrame({'Predictions': rf_predictions})
+
+# CSV 파일로 저장
+df.to_csv('모의고사2.csv', index=False)
+
+import pandas as pd
+
+df = pd.read_csv("2-3.csv")
+
+# 각 광고의 클릭율 표본평균 계산
+mean_C = df['C'].mean()
+
+C = int(mean_C)
+print(C)
+
+import pandas as pd
+from scipy.stats import chi2_contingency
+
+# 각 광고의 클릭 횟수 리스트
+clicks_A = df['A'].tolist()
+clicks_B = df['B'].tolist()
+clicks_C = df['C'].tolist()
+
+# 카이제곱 검정 실행
+observed = [clicks_A, clicks_B, clicks_C]
+chi2, p, _, _ = chi2_contingency(observed)
+
+result = round(chi2, 4)
+print(result)
+
+p_value = p
+
+print(p)
+
+import pandas as pd
+df = pd.read_csv("Mental health.csv")
+
+df
+
+df.columns
+
+df.info()
+
+df.describe()
+
+from sklearn.preprocessing import MinMaxScaler
+# Age 컬럼의 결측값 처리
+average_age = df['Age'].mean()
+df['Age'].fillna(average_age, inplace=True)
+
+# Age 컬럼을 최소-최대 정규화
+scaler = MinMaxScaler()
+df['Age2'] = scaler.fit_transform(df[['Age']])
+
+# Age가 0.7 이상인 레코드 개수 계산
+count = len(df[df['Age2'] >= 0.7])
+
+print(count)
+
+import pandas as pd
+
+# Timestamp 컬럼을 datetime 형태로 변환
+df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+
+# 'AM/PM' 컬럼 추가
+df['AM/PM'] = 'AM'
+df.loc[df['Timestamp'].dt.hour >= 12, 'AM/PM'] = 'PM'
+
+# 오전에 응답한 학생들 중 'specialist for a treatment' 컬럼에서 'no' 레코드 수 계산
+result = len(df[(df['AM/PM'] == 'AM') & (df['specialist for a treatment'] == 'No')])
+
+print(result)
+
+
+import pandas as pd
+
+# 수치형 변수로 변환
+convert_dict = {'yes': 1, 'no': 0}
+df['Marital status'] = df['Marital status'].map(convert_dict)
+df['Depression'] = df['Depression'].map(convert_dict)
+df['Anxiety'] = df['Anxiety'].map(convert_dict)
+df['Panic attack'] = df['Panic attack'].map(convert_dict)
+df['specialist for a treatment'] = df['specialist for a treatment'].map(convert_dict)
+
+# 합계점수 컬럼 생성
+df['Total'] = df[['Marital status', 'Depression', 'Anxiety', 'Panic attack', 'specialist for a treatment']].sum(axis=1)
+
+# 합계 컬럼 상위 10명의 학생 중 가장 많은 'current year of Study' 값
+top_10= df.nlargest(10, 'Total')
+result = top_10['current year of Study'].mode().iloc[0]
+
+print(result)
+
+
+import pandas as pd
+
+# 학습용 데이터 로드
+x_train = pd.read_csv('house_x_train.csv')
+y_train = pd.read_csv('house_y_train.csv')
+
+# 평가용 데이터 로드
+x_test = pd.read_csv('house_x_test.csv')
+
+x_train
+
+
+x_train.info()
+
+x_train.columns
+
+# total_bedrooms 열 삭제
+x_train.drop(columns=['total_bedrooms'], inplace=True)
+x_test.drop(columns=['total_bedrooms'], inplace=True)
+
+
+# 'ocean_proximity' 컬럼의 고유값 확인
+unique_values = x_train['ocean_proximity'].unique()
+print("Unique values in 'ocean_proximity':", unique_values)
+
+
+# 'ocean_proximity' 매핑 값 정의
+ocean_proximity_mapping = {
+    'NEAR OCEAN': 0,
+    'INLAND': 1,
+    '<1H OCEAN': 2,
+    'NEAR BAY': 3,
+    'ISLAND': 4
+}
+
+# 'ocean_proximity' 컬럼을 수치형으로 인코딩
+x_train['ocean_proximity'] = x_train['ocean_proximity'].map(ocean_proximity_mapping)
+x_test['ocean_proximity'] = x_test['ocean_proximity'].map(ocean_proximity_mapping)
+
+print(x_train.head())
+
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
+
+# total_rooms 최소 최대 정규화
+scaler = MinMaxScaler()
+x_train['total_rooms'] = scaler.fit_transform(x_train[['total_rooms']])
+x_test['total_rooms'] = scaler.transform(x_test[['total_rooms']])
+
+# population, median_income 표준정규화
+scaler = StandardScaler()
+x_train[['population', 'median_income']] = scaler.fit_transform(x_train[['population', 'median_income']])
+x_test[['population', 'median_income']] = scaler.transform(x_test[['population', 'median_income']])
+
+from sklearn.model_selection import train_test_split
+# 훈련 데이터와 테스트 데이터 분리
+X_train, X_test, y_train, y_test = train_test_split(x_train, y_train, test_size=0.2, random_state=29)
+
+print("X_train shape:", X_train.shape)
+print("X_test shape:", X_test.shape)
+print("y_train shape:", y_train.shape)
+print("y_test shape:", y_test.shape)
+
+
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.metrics import mean_absolute_error
+
+# 다중선형회귀 모델 생성 및 학습
+linear_model = LinearRegression()
+linear_model.fit(X_train, y_train)
+
+# 예측
+linear_predictions = linear_model.predict(x_test)[:3303]
+
+# MAE 평가
+linear_mae = mean_absolute_error(y_test, linear_predictions)
+print(linear_mae)
+
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_absolute_error
+
+# 의사결정나무 회귀 모델 생성
+tree_model = DecisionTreeRegressor(random_state=42)
+tree_model.fit(X_train, y_train)
+
+# 예측
+tree_predictions = tree_model.predict(x_test)[:3303]
+
+# MAE 평가
+tree_mae = mean_absolute_error(y_test, tree_predictions)
+
+print(tree_mae)
+
+# 예측 결과를 데이터프레임으로 생성
+df = pd.DataFrame({'Predictions': linear_predictions})
+
+# CSV 파일로 저장
+df.to_csv('모의고사3.csv', index=False)
+
+import pandas as pd
+import numpy as np
+df = pd.read_csv("3-3.csv")
+
+# 교육 방법별로 데이터 분리
+A = df[df['Method'] == 'A']['Score']
+B = df[df['Method'] == 'B']['Score']
+C = df[df['Method'] == 'C']['Score']
+
+# 각 교육 방법별 분산 계산
+var_A = round(np.var(A, ddof=1), 2)
+var_B = round(np.var(B, ddof=1), 2)
+var_C = round(np.var(C, ddof=1), 2)
+
+# 결과 출력
+print(var_A)
+print(var_B)
+print(var_C)
+
+from scipy.stats import f_oneway
+
+# oneway ANOVA 분석 실행
+f_statistic, p_value = f_oneway(A, B, C)
+
+# 결과 출력
+rounded_f_statistic = round(f_statistic, 2)
+print(rounded_f_statistic)
+
+
+print(p_value)
+
+import pandas as pd
+df = pd.read_csv("Loan_Default.csv")
+
+df
+
+df.columns
+
+df.info()
+
+df.isnull().sum()
+
+
+# int_rate 컬럼의 사분위값(하위 25%)을 구한 후 해당 값들의 평균을 계산
+lower_25 = df['int_rate'].quantile(0.25)
+int_rate_25 = df[df['int_rate'] <= lower_25]['int_rate']
+result = int_rate_25.mean()
+
+print(int(result))
+
+# 결측치 삭제
+df_drop = df.dropna(subset=['loan_amnt', 'annual_inc'])
+
+# loan_amnt 컬럼의 상위 10%와 하위 10%에 해당하는 annual_inc 값 구하기
+top_10 = df_drop['loan_amnt'].quantile(0.9)
+bottom_10 = df_drop['loan_amnt'].quantile(0.1)
+
+high = df_drop[df_drop['loan_amnt'] >= top_10]['annual_inc']
+low = df_drop[df_drop['loan_amnt'] <= bottom_10]['annual_inc']
+
+# 상위 10%와 하위 10%의 annual_inc 차 구하기
+difference = high.mean() - low.mean()
+
+print(int(difference))
+
+# 상관계수 계산
+corr = df['annual_inc'].corr(df['int_rate'])
+
+print(round(corr, 3))
+
+import pandas as pd
+
+# 학습용 데이터 로드
+x_train = pd.read_csv('heart_x_train.csv')
+y_train = pd.read_csv('heart_y_train.csv')
+
+# 평가용 데이터 로드
+x_test = pd.read_csv('heart_x_test.csv')
+
+x_train
+
+x_train.columns
+
+x_train.describe()
+
+from sklearn.preprocessing import MinMaxScaler
+
+# MinMaxScaler 객체 생성
+scaler = MinMaxScaler()
+
+# 'platelets' 컬럼 최소-최대 정규화
+x_train['platelets'] = scaler.fit_transform(x_train[['platelets']])
+x_test['platelets'] = scaler.transform(x_test[['platelets']])
+
+
+from sklearn.model_selection import train_test_split
+# 훈련 데이터와 테스트 데이터 분리
+X_train, X_test, y_train, y_test = train_test_split(x_train, y_train, test_size=0.2, random_state=29)
+
+print("X_train shape:", X_train.shape)
+print("X_test shape:", X_test.shape)
+print("y_train shape:", y_train.shape)
+print("y_test shape:", y_test.shape)
+
+
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import accuracy_score
+
+# 다중선형회귀모델 생성 및 학습
+linear_model = LinearRegression()
+linear_model.fit(X_train, y_train)
+
+# 예측 (실수값으로 예측될테니, 이를 이산값으로 변환)
+linear_predictions = (linear_model.predict(x_test) > 0.5)[:48].astype(int)
+
+# 정확도 계산
+linear_accuracy = accuracy_score(y_test, linear_predictions)
+print(linear_accuracy)
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 랜덤 포레스트 모델 생성
+rf_model = RandomForestClassifier(random_state=42)
+
+# 모델 학습
+rf_model.fit(X_train, y_train)
+
+# 테스트 데이터에 대한 예측 수행
+rf_predictions = rf_model.predict(x_test)[:48]
+
+# 예측 결과를 정확도로 평가
+rf_accuracy = accuracy_score(y_test, rf_predictions)
+print(rf_accuracy)
+
+
+# 예측 결과를 데이터프레임으로 생성
+df = pd.DataFrame({'Predictions': rf_predictions})
+
+# CSV 파일로 저장
+df.to_csv('모의고사4.csv', index=False)
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("4-3.csv")
+
+# (계단 오르기 전 혈압 - 계단 오른 후 혈압)의 평균 계산
+difference_mean = round((df['BP_before'] - df['BP_after']).mean(),2)
+
+# 결과 출력
+print(difference_mean)
+
+from scipy.stats import wilcoxon
+
+# Wilcoxon signed rank test 실행
+statistic, p_value = wilcoxon(df['BP_before'], df['BP_after'])
+
+# 검정통계량 출력
+result = int(statistic)
+print(result)
+
+print(p_value)
+
+import pandas as pd
+
+df = pd.read_csv("diabetes.csv")
+df
+
+df.columns
+
+df.info()
+
+df.describe()
+
+from sklearn.preprocessing import StandardScaler
+
+# 'BMI' 컬럼을 표준정규화
+scaler = StandardScaler()
+df['BMI2'] = scaler.fit_transform(df[['BMI']])
+
+# 표준정규화된 'BMI' 값이 0.5 이상인 레코드들의 'Outcome' 비율 계산
+filtered_records = df[df['BMI2'] >= 0.5]
+result = filtered_records['Outcome'].mean()
+
+print(round(result, 3))
+
+
+answer = (df.loc[df.Outcome == 1].std() - df.loc[df.Outcome == 0].std()).sort_values().index[0]
+
+print(answer)
+
+ # 연령대 구간 및 그룹명 설정
+age_bins = [0, 30, 40, float('inf')]
+age_labels = ['30대 이하', '40대 이하', '60대 이상']
+
+# 'Age' 값을 연령대 그룹명으로 변환하여 'AgeGroup' 컬럼 추가
+df['AgeGroup'] = pd.cut(df['Age'], bins=age_bins, labels=age_labels)
+
+# 그룹별 'BloodPressure' 평균 계산
+result = df.groupby('AgeGroup')['BloodPressure'].mean()
+
+# 정수로 변환하여 출력
+print(result.astype(int))
+
+import pandas as pd
+
+# 학습용 데이터 로드
+x_train = pd.read_csv('cancer_x_train.csv')
+y_train = pd.read_csv('cancer_y_train.csv')
+
+# 평가용 데이터 로드
+x_test = pd.read_csv('cancer_x_test.csv')
+
+x_train
+
+x_train.columns
+
+
+x_train.info()
+
+x_train.describe()
+
+from sklearn.preprocessing import MinMaxScaler
+
+# area_worst 열만 선택하여 정규화할 데이터 생성
+x_train_area_worst = x_train[['area_worst']]
+x_test_area_worst = x_test[['area_worst']]
+
+# MinMaxScaler 객체 생성 및 학습 데이터에 맞게 스케일링
+scaler = MinMaxScaler()
+scaler.fit(x_train_area_worst)
+
+# 정규화된 데이터로 변환
+x_train_scaled = scaler.transform(x_train_area_worst)
+x_test_scaled = scaler.transform(x_test_area_worst)
+
+# 정규화된 데이터를 원래 데이터프레임에 저장
+x_train['area_worst'] = x_train_scaled
+x_test['area_worst'] = x_test_scaled
+
+
+y_train
+#B: 양성 종양 (양성 유방암)
+#M: 악성 종양 (악성 유방암)
+
+# 'B'를 0, 'M'을 1로 변환
+y_train = y_train.replace({'B': 0, 'M': 1})
+
+y_train
+
+from sklearn.model_selection import train_test_split
+# 훈련 데이터와 테스트 데이터 분리
+X_train, X_test, y_train, y_test = train_test_split(x_train, y_train, test_size=0.2, random_state=29)
+
+print("X_train shape:", X_train.shape)
+print("X_test shape:", X_test.shape)
+print("y_train shape:", y_train.shape)
+print("y_test shape:", y_test.shape)
+
+
+from sklearn.metrics import roc_auc_score
+from xgboost import XGBClassifier
+
+# XGBoost 모델 학습 및 평가
+xgb_model = XGBClassifier()
+xgb_model.fit(X_train, y_train)
+xgb_pred = xgb_model.predict_proba(x_test)[:91, 1]  # 양성 클래스에 대한 확률 값을 사용
+
+xgb_auc = roc_auc_score(y_test, xgb_pred)
+print(xgb_auc)
+
+# 예측 결과를 데이터프레임으로 생성
+df = pd.DataFrame({'Predictions': knn_pred})
+
+# CSV 파일로 저장
+df.to_csv('모의고사5.csv', index=False)
+
+import pandas as pd
+
+df = pd.read_csv('5-3.csv')
+
+#각 도시의 대기 오염 수준 데이터
+A = df['City_A_Pollution']
+B = df['City_B_Pollution']
+C = df['City_C_Pollution']
+
+# 전체 데이터셋의 오염 수준 표본 평균 계산
+total_mean = (A.mean() + B.mean() + C.mean()) / 3
+
+
+#정수로 계산
+result = int(total_mean)
+
+print(result)
+
+from scipy.stats import kruskal
+
+# 크루스칼-월리스 검정 실행
+statistic, p_value = kruskal(A, B, C)
+
+# 검정통계량 출력
+result = round(statistic, 4)
+print(result)
+
+print(p_value)
