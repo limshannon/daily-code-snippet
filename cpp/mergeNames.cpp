@@ -1,9 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <unordered_set>
 
 std::vector<std::string> unique_names(const std::vector<std::string>& names1, const std::vector<std::string>& names2)
 {
-    throw std::logic_error("Waiting to be implemented");
+    std::unordered_set<string> set01;
+    for (int i=0; i<names1.size(); i++)
+        {
+            if(auto iter=set01.find(names1[i]; iter != set01.send())
+                continue;
+            else{
+                set01.insert(names1[i]);
+            }
+        }
+    for (int i=0; i<names2.size(); i++)
+        {
+            if(auto iter=set01.find(names2[i]; iter != set01.send())
+                continue;
+            else{
+                set01.insert(names2[i]);
+            }
+        }
+    return set01;
 }
 
 #ifndef RunTests
