@@ -3,7 +3,26 @@
 
 std::vector<int> simulate(const std::vector<int> &entries)
 {
-    throw std::logic_error("Waiting to be implemented");
+    if (entries.size() <4)
+        return entries;
+    std::vector<int> arr {entries}; #copy for result 
+    std::vector<std::vector<int>::iterator> tempEntries{};
+    for (auto itX = std::begin(arr); itX!=std::end(arr) -4; ++itX){
+        const auto rightT = itX +4;
+        if (*itX <= *rightT)
+            tempEntries.push_back(itX);        
+    }
+    for (auto itX = std::begin(arr) + 3; itX != std::end(arr); ++itX) {
+        const auto leftT = itX - 3;
+        if (*itX <= *leftT)
+            tempEntries.push_back(itX);
+    }
+    for (auto it = std::begin(arr); it != std::end(arr); ++it) {
+        if (std::find(std::begin(tempEntries), std::end(tempEntries), it) != std::end(tempEntries))
+            *it = 0;
+    }
+    return arr;       
+    //throw std::logic_error("Waiting to be implemented");
 }
 
 #ifndef RunTests
