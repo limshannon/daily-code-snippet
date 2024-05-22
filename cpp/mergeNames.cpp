@@ -1,27 +1,19 @@
 #include <iostream>
 #include <vector>
-#include <unordered_set>
+#include <algorithm>
+
 
 std::vector<std::string> unique_names(const std::vector<std::string>& names1, const std::vector<std::string>& names2)
 {
-    std::unordered_set<string> set01;
-    for (int i=0; i<names1.size(); i++)
-        {
-            if(auto iter=set01.find(names1[i]; iter != set01.send())
-                continue;
-            else{
-                set01.insert(names1[i]);
-            }
-        }
-    for (int i=0; i<names2.size(); i++)
-        {
-            if(auto iter=set01.find(names2[i]; iter != set01.send())
-                continue;
-            else{
-                set01.insert(names2[i]);
-            }
-        }
-    return set01;
+    std::vector<std::string> res;
+    res.insert(res.end(), names1.begin(), names1.end());
+    res.insert(res.end(), names2.begin(), names2.end());
+    
+    std::sort(res.begin(), res.end());
+    auto last = std::unique(res.begin(), res.end());
+    res.erase(last, res.end());
+     
+    return res;
 }
 
 #ifndef RunTests
