@@ -5,7 +5,16 @@
 
 std::pair<int, int> findTwoSum(const std::vector<int>& list, int sum)
 {
-    throw std::logic_error("Waiting to be implemented");
+    std::unordered_map<int, int> sumMap;
+    //for (int i =0; i<list.size(); ++i){
+    for (std::size_t i =0; i<list.size(); ++i){
+        auto finding = sumMap.find(sum - list[i]);
+        if (finding != sumMap.end())
+            return std::make_pair(i, finding->second);
+        sumMap[list[i]] = i;
+        
+    }
+    return std::make_pair(-1,-1);
 }
 
 #ifndef RunTests
